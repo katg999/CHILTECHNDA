@@ -33,6 +33,7 @@ const App = () => {
   };
 
   // Generates NDA and updates chat history
+<<<<<<< HEAD
 const generateNDA = () => {
   const { name, date } = userDetails;
   const ndaContent = generateNDATemplate(name, date, null, "text"); // Plain text for chatbot
@@ -54,6 +55,31 @@ const generateNDA = () => {
   // Handles signature saves
   const handleSignatureSave = (signature) => {
     setSignatureData(signature);
+=======
+  const generateNDA = () => {
+    const { name, date } = userDetails;
+    const ndaContent = generateNDATemplate(name, date);
+
+>>>>>>> 92b8194 (SignatureFunctionalityForTheChatbot)
+    setChatHistory((prev) => [
+      ...prev,
+      {
+        role: "model",
+<<<<<<< HEAD
+        text: "Signature saved successfully! You can now download the NDA.",
+=======
+        text: "I have generated your NDA. Please review it carefully:",
+      },
+      { role: "model", text: ndaContent },
+      { role: "model", text: "Please sign below to proceed." },
+    ]);
+
+    setNdaGenerated(true);
+  };
+
+  // Handles signature save
+  const handleSignatureSave = (signature) => {
+    setSignatureData(signature);
     setChatHistory((prev) => [
       ...prev,
       {
@@ -63,6 +89,38 @@ const generateNDA = () => {
     ]);
   };
 
+  // Handles NDA download
+  const handleDownload = () => {
+    if (!signatureData) {
+      alert("Please sign the NDA before downloading.");
+      return;
+    }
+
+    const { name, date } = userDetails;
+    const ndaContent = generateNDATemplate(name, date, signatureData);
+
+    const blob = new Blob([ndaContent], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `NDA_${name}_${date}.html`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    setChatHistory((prev) => [
+      ...prev,
+      {
+        role: "model",
+        text: "The NDA has been downloaded with your signature. Is there anything else you need?",
+>>>>>>> 92b8194 (SignatureFunctionalityForTheChatbot)
+      },
+    ]);
+  };
+
+<<<<<<< HEAD
   // Handles NDA download
    const handleDownload = () => {
   if (!signatureData) {
@@ -94,6 +152,8 @@ const generateNDA = () => {
 };
 
 
+=======
+>>>>>>> 92b8194 (SignatureFunctionalityForTheChatbot)
   // Scroll to latest message in chat
   useEffect(() => {
     chatBodyRef.current?.scrollTo({
@@ -194,4 +254,8 @@ const NDAForm = ({ onSubmit }) => (
   </div>
 );
 
+<<<<<<< HEAD
 export default App;
+=======
+export default App;
+>>>>>>> 92b8194 (SignatureFunctionalityForTheChatbot)

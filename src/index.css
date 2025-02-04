@@ -197,8 +197,7 @@ body {
 .chat-form .message-input:valid-button {
   display: block;
 }
-
-* NDA Form Specific Styles */ .nda-form-container {
+.nda-form-container {
   max-width: 500px;
   margin: 20px auto;
   padding: 25px;
