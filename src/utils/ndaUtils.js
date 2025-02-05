@@ -1,4 +1,37 @@
-export const generateNDATemplate = (name, date, signature = null) => `
+export const generateNDATemplate = (name, date, signature = null, format = "text") => {
+  if (format === "text") {
+    return `
+MUTUAL NON-DISCLOSURE AGREEMENT
+
+This Non-Disclosure Agreement (the "Agreement") is entered into on ${date} by and between:
+
+${name} ("Participant")  
+AND  
+KETI AI ("Company")
+
+1. Purpose  
+The purpose of this Agreement is to protect confidential information shared between the Participant and the Company.
+
+2. Confidential Information  
+"Confidential Information" includes any proprietary information, technical data, trade secrets, or know-how.
+
+3. Term  
+This Agreement shall remain in effect from the date of execution.
+
+4. Non-Disclosure  
+The Participant agrees to:  
+- Keep all Confidential Information strictly confidential  
+- Not use Confidential Information except as authorized  
+- Not disclose Confidential Information to third parties  
+
+Signed by: ${name}  
+Date: ${date}  
+${signature ? "[Signature Attached]" : ""}
+    `;
+  }
+
+  // HTML version (for downloads)
+  return `
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,11 +61,8 @@ export const generateNDATemplate = (name, date, signature = null) => `
     </ul>
     <div class="signature-section">
         <p><strong>Signed by:</strong> ${name}<br><strong>Date:</strong> ${date}</p>
-        ${
-          signature
-            ? `<img src="${signature}" class="signature-image" alt="Signature"/>`
-            : ""
-        }
+        ${signature ? `<img src="${signature}" class="signature-image" alt="Signature"/>` : ""}
     </div>
 </body>
 </html>`;
+};
