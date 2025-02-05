@@ -58,7 +58,7 @@ const generateNDA = () => {
 =======
   const generateNDA = () => {
     const { name, date } = userDetails;
-    const ndaContent = generateNDATemplate(name, date);
+    const ndaContent = generateNDATemplate(name, date, null, "text"); // Plain text for chatbot
 
 >>>>>>> 92b8194 (SignatureFunctionalityForTheChatbot)
     setChatHistory((prev) => [
@@ -70,7 +70,7 @@ const generateNDA = () => {
 =======
         text: "I have generated your NDA. Please review it carefully:",
       },
-      { role: "model", text: ndaContent },
+      { role: "model", text: ndaContent }, // Plain text version
       { role: "model", text: "Please sign below to proceed." },
     ]);
 
@@ -97,7 +97,7 @@ const generateNDA = () => {
     }
 
     const { name, date } = userDetails;
-    const ndaContent = generateNDATemplate(name, date, signatureData);
+    const ndaContent = generateNDATemplate(name, date, signatureData, "html"); // HTML for download
 
     const blob = new Blob([ndaContent], { type: "text/html" });
     const url = URL.createObjectURL(blob);

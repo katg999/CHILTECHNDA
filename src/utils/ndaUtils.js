@@ -1,5 +1,9 @@
-<<<<<<< HEAD
-export const generateNDATemplate = (name, date, signature = null, format = "text") => {
+export const generateNDATemplate = (
+  name,
+  date,
+  signature = null,
+  format = "text"
+) => {
   if (format === "text") {
     return `
 MUTUAL NON-DISCLOSURE AGREEMENT
@@ -33,9 +37,6 @@ ${signature ? "[Signature Attached]" : ""}
 
   // HTML version (for downloads)
   return `
-=======
-export const generateNDATemplate = (name, date, signature = null) => `
->>>>>>> 92b8194 (SignatureFunctionalityForTheChatbot)
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,13 +66,6 @@ export const generateNDATemplate = (name, date, signature = null) => `
     </ul>
     <div class="signature-section">
         <p><strong>Signed by:</strong> ${name}<br><strong>Date:</strong> ${date}</p>
-<<<<<<< HEAD
-        ${signature ? `<img src="${signature}" class="signature-image" alt="Signature"/>` : ""}
-    </div>
-</body>
-</html>`;
-};
-=======
         ${
           signature
             ? `<img src="${signature}" class="signature-image" alt="Signature"/>`
@@ -80,4 +74,4 @@ export const generateNDATemplate = (name, date, signature = null) => `
     </div>
 </body>
 </html>`;
->>>>>>> 92b8194 (SignatureFunctionalityForTheChatbot)
+};
