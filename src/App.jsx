@@ -1,12 +1,10 @@
 import React from "react";
 import ChatbotIcon from "./components/ChatbotIcon";
 import ChatForm from "./components/ChartForm";
-
 import { useState, useRef } from "react";
 import ChatMessage from "./components/ChatMessage";
 import { useEffect } from "react";
 import Signature from "./components/Signature";
-
 import { generateNDATemplate } from "./utils/ndaUtils"; // Externalized NDA template function
 
 const App = () => {
@@ -27,7 +25,7 @@ const App = () => {
     setChatHistory([
       {
         role: "model",
-        text: `Welcome ${name}! I'll help you generate and manage your NDA. Would you like me to create the NDA now?`,
+        text: `Welcome ${name}! I'll help you generate and manage your NDA. Would you like me to create the NDA now? Type 'yes or 'no' `,
       },
     ]);
   };
@@ -35,7 +33,7 @@ const App = () => {
   // Generates NDA and updates chat history
   const generateNDA = () => {
     const { name, date } = userDetails;
-    const ndaContent = generateNDATemplate(name, date);
+    const ndaContent = generateNDATemplate(name, date, null, "text"); // Plain text for chatbot
 
     setChatHistory((prev) => [
       ...prev,
@@ -43,8 +41,7 @@ const App = () => {
         role: "model",
         text: "I have generated your NDA. Please review it carefully:",
       },
-      { role: "model", text: ndaContent },
-      { role: "model", text: "Please sign below to proceed." },
+      { role: "model", text: ndaContent }, // Plain text version
     ]);
 
     setNdaGenerated(true);
@@ -70,8 +67,8 @@ const App = () => {
     }
 
     const { name, date } = userDetails;
-    const ndaContent = generateNDATemplate(name, date, signatureData);
-
+    const ndaContent = generateNDATemplate(name, date, signatureData, "html"); // HTML for downloads
+   
     const blob = new Blob([ndaContent], { type: "text/html" });
     const url = URL.createObjectURL(blob);
 
@@ -106,7 +103,7 @@ const App = () => {
         <div className="chat-header">
           <div className="header-info">
             <ChatbotIcon />
-            <h2 className="logo-text">CHIL HYGIENE NDA CHATBOT</h2>
+            <h2 className="logo-text">KETI AI NDA CHATBOT</h2>
           </div>
           {ndaGenerated && signatureData && (
             <button
@@ -192,3 +189,4 @@ const NDAForm = ({ onSubmit }) => (
 );
 
 export default App;
+

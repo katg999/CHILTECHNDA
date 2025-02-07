@@ -278,3 +278,38 @@ body {
 .material-symbols-rounded {
   font-size: 24px;
 }
+
+
+.signature-container {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.signature-canvas {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+
+ /* Chatbot Image */
+.chatbot-icon-container {
+  width: 32px; /* Adjust size as needed */
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6; /* Tailwind gray-100 */
+  border-radius: 50%; /* Makes it circular */
+  overflow: hidden; /* Ensures image stays within the circle */
+  border: 1px solid #d1d5db; /* Tailwind gray-300 */
+}
+
+.chatbot-icon-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Ensures image scales without cropping */
+}
