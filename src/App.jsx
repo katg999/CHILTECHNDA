@@ -1,12 +1,10 @@
 import React from "react";
 import ChatbotIcon from "./components/ChatbotIcon";
 import ChatForm from "./components/ChartForm";
-
 import { useState, useRef } from "react";
 import ChatMessage from "./components/ChatMessage";
 import { useEffect } from "react";
 import Signature from "./components/Signature";
-
 import { generateNDATemplate } from "./utils/ndaUtils"; // Externalized NDA template function
 
 const App = () => {
@@ -44,7 +42,6 @@ const App = () => {
         text: "I have generated your NDA. Please review it carefully:",
       },
       { role: "model", text: ndaContent }, // Plain text version
-      { role: "model", text: "Please sign below to proceed." },
     ]);
 
     setNdaGenerated(true);
@@ -70,8 +67,8 @@ const App = () => {
     }
 
     const { name, date } = userDetails;
-    const ndaContent = generateNDATemplate(name, date, signatureData, "html"); // HTML for download
-
+    const ndaContent = generateNDATemplate(name, date, signatureData, "html"); // HTML for downloads
+   
     const blob = new Blob([ndaContent], { type: "text/html" });
     const url = URL.createObjectURL(blob);
 
@@ -192,3 +189,4 @@ const NDAForm = ({ onSubmit }) => (
 );
 
 export default App;
+
