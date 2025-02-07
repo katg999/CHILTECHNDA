@@ -51,7 +51,7 @@ const generateNDA = () => {
 };
 
 
-  // Handles signature save
+  // Handles signature saves
   const handleSignatureSave = (signature) => {
     setSignatureData(signature);
     setChatHistory((prev) => [
@@ -103,7 +103,7 @@ const generateNDA = () => {
   }, [chatHistory]);
 
   return (
-    
+
     <div className="container">
       <div className="chatbot-popup">
         <div className="chat-header">
