@@ -279,7 +279,6 @@ body {
   font-size: 24px;
 }
 
-
 .signature-container {
   margin: 20px 0;
   padding: 20px;
@@ -293,9 +292,7 @@ body {
   border-radius: 4px;
 }
 
-
-
- /* Chatbot Image */
+/* Chatbot Image */
 .chatbot-icon-container {
   width: 32px; /* Adjust size as needed */
   height: 32px;
@@ -312,4 +309,35 @@ body {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain; /* Ensures image scales without cropping */
+}
+
+.signature-wrapper {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.signature-canvas {
+  width: 100%;
+  border: 2px solid #000;
+  border-radius: 5px;
+}
+
+.button-group {
+  margin-top: 10px;
+}
+
+button {
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
 }
